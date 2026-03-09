@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python D:/bronze_tier/watchers/ralph_wiggum_hook.py"
+          }
+        ]
+      }
+    ]
+  }
+}

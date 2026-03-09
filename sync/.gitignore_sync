@@ -1,0 +1,55 @@
+# ============================================================================
+# .gitignore for vault sync (Platinum Tier)
+# Security rule: ONLY markdown and state files sync.
+# Secrets NEVER leave the local machine.
+# ============================================================================
+
+# ── Secrets (NEVER sync) ─────────────────────────────────────────────────────
+.env
+.env.*
+*.env
+secrets/
+credentials/
+
+# ── Browser sessions (contain auth tokens) ───────────────────────────────────
+.whatsapp_session/
+.linkedin_session/
+*.session
+*.session.json
+
+# ── Python ───────────────────────────────────────────────────────────────────
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ── Node.js ──────────────────────────────────────────────────────────────────
+node_modules/
+npm-debug.log*
+
+# ── System / OS ──────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.tmp
+
+# ── Logs (large, contain sensitive data) ─────────────────────────────────────
+Logs/*.log
+Logs/health_monitor.log
+
+# ── Lock files ───────────────────────────────────────────────────────────────
+*.lock
+*.lock.json
+
+# ── Odoo (cloud-only) ────────────────────────────────────────────────────────
+/odoo/
+/var/
+
+# ── What IS synced ────────────────────────────────────────────────────────────
+# ✅ All .md files (vault notes, action files, briefings)
+# ✅ Logs/*.json (audit logs, social_actions, odoo_actions)
+# ✅ vault/health_status.json
+# ✅ vault/current_task.json
+# ✅ Updates/*.json (cloud signals to local)

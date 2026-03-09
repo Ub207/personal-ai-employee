@@ -1,0 +1,15 @@
+[Unit]
+Description=AI Employee — Weekly Audit (Gold)
+After=network.target
+
+[Service]
+Type=oneshot
+User=__AI_USER__
+Group=__AI_USER__
+WorkingDirectory=__VAULT_PATH__
+EnvironmentFile=-__VAULT_PATH__/.env
+ExecStart=__VAULT_PATH__/.venv/bin/python3 watchers/weekly_audit.py \
+    --vault-path __VAULT_PATH__
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ai-weekly-audit

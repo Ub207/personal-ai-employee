@@ -1,0 +1,2 @@
+This is a test file to verify the filesystem watcher is working correctly.
+If this creates an action file in Needs_Action, the Bronze Tier watcher is functional.

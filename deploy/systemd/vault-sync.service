@@ -1,0 +1,17 @@
+[Unit]
+Description=AI Employee — Vault Git Sync (Platinum)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=__AI_USER__
+Group=__AI_USER__
+WorkingDirectory=__VAULT_PATH__
+EnvironmentFile=-__VAULT_PATH__/.env
+ExecStart=__VAULT_PATH__/.venv/bin/python3 sync/vault_sync.py \
+    --vault-path __VAULT_PATH__ \
+    --mode push
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=vault-sync

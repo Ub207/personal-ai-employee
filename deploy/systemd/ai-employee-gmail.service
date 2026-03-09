@@ -1,0 +1,23 @@
+[Unit]
+Description=AI Employee — Gmail IMAP Watcher (Bronze)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=__AI_USER__
+Group=__AI_USER__
+WorkingDirectory=__VAULT_PATH__
+EnvironmentFile=-__VAULT_PATH__/.env
+ExecStart=__VAULT_PATH__/.venv/bin/python3 watchers/gmail_imap_watcher.py \
+    --vault-path __VAULT_PATH__
+Restart=on-failure
+RestartSec=30
+StartLimitIntervalSec=600
+StartLimitBurst=3
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ai-gmail
+
+[Install]
+WantedBy=multi-user.target

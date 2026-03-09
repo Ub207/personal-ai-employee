@@ -1,0 +1,24 @@
+# Core Dependencies for AI Employee Watchers
+# ===========================================
+
+# Filesystem monitoring (Bronze Tier)
+watchdog>=4.0.0
+
+# WhatsApp Web automation (Silver Tier)
+playwright>=1.40.0
+
+# LinkedIn automation (Silver Tier)
+# Uses playwright (already included)
+
+# ── Gold Tier Dependencies ─────────────────────────────────────────────────────
+
+# HTTP client for Facebook, Instagram, and Twitter API calls (Gold Tier)
+requests>=2.31.0
+
+# Thread-safe file locking for audit_logger.py (Gold Tier)
+filelock>=3.13.0
+
+# Process monitoring for health_monitor.py (Gold Tier)
+psutil>=5.9.0
+
+# After installing: run "playwright install chromium"

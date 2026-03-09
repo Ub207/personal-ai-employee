@@ -1,0 +1,18 @@
+{
+  "name": "ai-employee-mcp-servers",
+  "version": "2.0.0",
+  "description": "MCP servers for AI Employee (Email + Odoo + Social)",
+  "type": "module",
+  "scripts": {
+    "start:email": "node email-mcp-server.js",
+    "start:odoo": "node odoo-mcp-server.js",
+    "start:social": "node social-mcp-server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "dotenv": "^16.0.0",
+    "node-fetch": "^3.3.2",
+    "nodemailer": "^6.9.0",
+    "zod": "^3.22.0"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip install:*)",
+      "Bash(tasklist:*)",
+      "Bash(python:*)",
+      "Bash(npm install:*)",
+      "Read(//proc/809/fd/**)",
+      "Bash(jobs -l)",
+      "Bash(taskkill:*)",
+      "Bash(cmd:*)",
+      "Bash(start Approval Orchestrator:*)",
+      "Bash(start Health Monitor:*)",
+      "Bash(start Daily Briefing Scheduler:*)",
+      "Bash(wmic process:*)",
+      "Bash(xargs -I {} taskkill /F /PID {})",
+      "Bash(do taskkill:*)",
+      "Bash(powershell:*)",
+      "Bash(gh repo:*)",
+      "Bash(curl:*)",
+      "Bash(gh api:*)",
+      "Bash(do:*)",
+      "Bash(echo invoice_no,client,amount,date\nINV-001,ABC Corp,5000,2026-03-09\nINV-002,XYZ Ltd,2500,2026-03-09:*)",
+      "Bash(gh auth:*)"
+    ]
+  }
+}

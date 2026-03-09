@@ -1,0 +1,22 @@
+# Credentials — never commit
+.env
+*.env
+
+# Browser sessions (WhatsApp / LinkedIn)
+.whatsapp_session/
+.linkedin_session/
+
+# Node
+mcp_servers/node_modules/
+
+# Python
+__pycache__/
+*.pyc
+watchers/__pycache__/
+
+# Logs (optional — remove if you want to track logs)
+Logs/
+
+# OS
+.DS_Store
+Thumbs.db

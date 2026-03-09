@@ -1,0 +1,23 @@
+[Unit]
+Description=AI Employee — Approval Orchestrator (Silver)
+After=network.target vault-sync.service
+Wants=network.target
+
+[Service]
+Type=simple
+User=__AI_USER__
+Group=__AI_USER__
+WorkingDirectory=__VAULT_PATH__
+EnvironmentFile=-__VAULT_PATH__/.env
+ExecStart=__VAULT_PATH__/.venv/bin/python3 watchers/approval_orchestrator.py \
+    --vault-path __VAULT_PATH__
+Restart=on-failure
+RestartSec=15
+StartLimitIntervalSec=300
+StartLimitBurst=3
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ai-approval
+
+[Install]
+WantedBy=multi-user.target
