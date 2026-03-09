@@ -1,163 +1,253 @@
-# AI Employee — Bronze Tier ✅
+# Personal AI Employee — All 4 Tiers Complete 🏆
 
-> **Status:** Complete — Ready for Silver Tier upgrade
+> **Built with Claude Code + Obsidian** | Local-first, Agent-driven, Human-in-the-loop
 
-This is your Personal AI Employee built with Claude Code + Obsidian. It monitors your inbox and filesystem, processes files autonomously, and keeps you informed via a Markdown dashboard.
+![Status](https://img.shields.io/badge/Status-Platinum%20Complete-gold)
+![Tiers](https://img.shields.io/badge/Tiers-Bronze%20%7C%20Silver%20%7C%20Gold%20%7C%20Platinum-blue)
+![Platform](https://img.shields.io/badge/Platform-Windows%20%2F%20Linux-lightgrey)
+![AI](https://img.shields.io/badge/AI-Claude%20Code-orange)
 
 ---
 
-## ✅ Bronze Tier Deliverables (Complete)
+## What Is This?
 
-| Requirement | Status | Location |
-|-------------|--------|----------|
-| Obsidian vault with Dashboard.md | ✅ | `Dashboard.md` |
-| Company Handbook with rules | ✅ | `Company_Handbook.md` |
-| Working Watcher (Filesystem) | ✅ | `watchers/filesystem_watcher.py` |
-| Working Watcher (Gmail) | ✅ | `watchers/gmail_imap_watcher.py` |
-| Claude Code Agent Skills | ✅ | `.claude/skills/` |
-| Folder structure | ✅ | `/Inbox`, `/Needs_Action`, `/Done`, `/Pending_Approval`, `/Briefings` |
+A fully autonomous **Personal AI Employee** that runs locally on your machine. It monitors your email, social media, and filesystem — creates plans, drafts responses, and asks for your approval before taking any real action.
+
+**Architecture:** `Watcher (Trigger) → Plan.md (Brain) → HITL Approval → Skill (Action) → Done`
+
+---
+
+## Tier Completion
+
+| Tier | Status | Key Deliverables |
+|------|--------|-----------------|
+| Bronze | ✅ Complete | Vault, Dashboard, Filesystem Watcher, Agent Skills |
+| Silver | ✅ Complete | CSV Drop Watcher, 5 Production Skills, HITL, Scheduler |
+| Gold | ✅ Complete | CEO Briefing, Audit Logger, Health Monitor, Ralph Wiggum Hook |
+| Platinum | ✅ Complete | Cloud VM Deploy, 13 Systemd Units, Vault Sync, A2A Agent |
+
+---
+
+## Vault Structure
+
+```
+D:/bronze_tier/
+├── Inbox/                    # Drop zone — new tasks arrive here
+├── Needs_Action/             # Queued for processing
+├── Pending_Approval/         # Awaiting your sign-off
+│   ├── email/
+│   └── social/
+├── Approved/                 # You approved — execute
+├── Rejected/                 # You rejected — log and archive
+├── Done/                     # Completed & archived
+├── DropBox/                  # Drop CSV/PDF invoices here
+├── Social_Drafts/            # LinkedIn post drafts
+├── Briefings/                # Auto-generated CEO briefings
+├── Plans/                    # Task execution plans
+├── Logs/                     # Audit trail
+├── Dashboard.md              # Live status overview
+├── Company_Handbook.md       # AI rules of engagement
+├── start_watchers.bat        # Start all 7 watchers at once
+│
+├── watchers/                 # Python watcher scripts
+│   ├── filesystem_watcher.py
+│   ├── gmail_imap_watcher.py
+│   ├── twitter_watcher.py
+│   ├── csv_drop_watcher.py
+│   ├── approval_orchestrator.py
+│   ├── health_monitor.py
+│   ├── daily_briefing_scheduler.py
+│   ├── facebook_instagram_watcher.py
+│   ├── linkedin_poster.py
+│   ├── whatsapp_watcher.py
+│   ├── weekly_audit.py
+│   ├── audit_logger.py
+│   ├── ralph_wiggum_hook.py
+│   ├── cloud_orchestrator.py
+│   └── a2a_agent.py
+│
+├── .claude/skills/           # Agent Skills (Claude's brain)
+│   ├── gmail-send/           # Send emails via SMTP
+│   ├── linkedin-post/        # Post to LinkedIn
+│   ├── vault-file-manager/   # Move files through workflow
+│   ├── human-approval/       # Request human sign-off
+│   ├── task-planner/         # Generate Plan.md before acting
+│   ├── process-inbox.md
+│   ├── update-dashboard.md
+│   ├── daily-briefing.md
+│   ├── weekly-audit.md
+│   ├── social-post.md
+│   ├── cloud-status.md
+│   └── sync-vault.md
+│
+├── mcp_servers/              # MCP servers (Node.js)
+│   ├── email-mcp-server.js
+│   ├── odoo-mcp-server.js
+│   └── social-mcp-server.js
+│
+├── scripts/
+│   └── run_ai_employee.py    # Auto-scheduler (every 5 min)
+│
+├── sync/
+│   └── vault_sync.py         # Git-based vault sync
+│
+└── deploy/                   # Cloud VM deployment
+    ├── setup_cloud_vm.sh
+    ├── setup_odoo_cloud.sh
+    ├── backup_vault.sh
+    └── systemd/              # 13 systemd service units
+```
 
 ---
 
 ## Quick Start
 
-### 1. Install Dependencies
+### 1. Clone & Install
 
 ```bash
-cd D:\bronze_tier\watchers
-pip install -r requirements.txt
+git clone https://github.com/Ub207/personal-ai-employee.git
+cd personal-ai-employee
+
+# Install Python dependencies
+pip install -r watchers/requirements.txt
+
+# Install MCP server dependencies
+cd mcp_servers && npm install && cd ..
 ```
 
-### 2. Start the Filesystem Watcher
+### 2. Configure Credentials
 
 ```bash
-cd D:\bronze_tier
-python watchers/filesystem_watcher.py
+cp .env.example .env
+# Edit .env with your credentials
 ```
 
-Keep this running in a terminal window. It monitors `/Inbox` for new files.
+Required credentials:
+```env
+GMAIL_USERNAME=your@gmail.com
+GMAIL_APP_PASSWORD=xxxx-xxxx-xxxx-xxxx
+SMTP_USER=your@gmail.com
+SMTP_PASS=xxxx-xxxx-xxxx-xxxx
+TWITTER_BEARER_TOKEN=...
+TWITTER_API_KEY=...
+TWITTER_API_SECRET=...
+TWITTER_ACCESS_TOKEN=...
+TWITTER_ACCESS_SECRET=...
+DRY_RUN=true   # Set false for live mode
+```
 
-### 3. (Optional) Configure Gmail Watcher
+### 3. Start All Watchers (Windows)
 
-1. Enable IMAP in Gmail: **Settings → Forwarding and POP/IMAP → Enable IMAP**
-2. Create App Password: [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords)
-3. Set environment variables:
+Double-click `start_watchers.bat` — opens 7 persistent terminal windows:
+
+| Window | Watcher | Purpose |
+|--------|---------|---------|
+| 1 | Gmail Watcher | Monitors Gmail inbox via IMAP |
+| 2 | Twitter Watcher | Monitors mentions & DMs |
+| 3 | Filesystem Watcher | Watches /Inbox for new files |
+| 4 | CSV Drop Watcher | Watches /DropBox for CSV/PDF |
+| 5 | Approval Orchestrator | Processes /Approved & /Rejected |
+| 6 | Health Monitor | Auto-restarts crashed watchers |
+| 7 | Daily Briefing | Generates CEO briefing at 8AM |
+
+### 4. Test the System
 
 ```bash
-set GMAIL_USERNAME=your.email@gmail.com
-set GMAIL_APP_PASSWORD=your-16-char-app-password
+# Test filesystem watcher
+echo "Process this invoice" > Inbox/test.txt
+
+# Test CSV drop watcher
+cp any_file.csv DropBox/
+
+# Check Dashboard
+cat Dashboard.md
 ```
-
-4. Run Gmail watcher:
-
-```bash
-python watchers/gmail_imap_watcher.py
-```
-
-### 4. Use Claude Code to Process Items
-
-Drop a file into `/Inbox` → Watcher creates action file in `/Needs_Action` → Ask Claude to process:
-
-```bash
-claude -p "Read Company_Handbook.md and process all files in Needs_Action. Update Dashboard.md and move files to Done when complete."
-```
-
-**Or use the Agent Skills:**
-
-```bash
-claude -p "Use the process-inbox skill to handle all pending items."
-```
-
----
-
-## Architecture
-
-```
-┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
-│   Gmail/Files   │ ──▶ │   Watchers       │ ──▶ │  Needs_Action/  │
-│   (External)    │     │   (Python)       │     │  (Markdown)     │
-└─────────────────┘     └──────────────────┘     └────────┬────────┘
-                                                          │
-                                                          ▼
-┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
-│   Dashboard.md  │ ◀── │   Claude Code    │ ◀── │  Company_       │
-│   (Status)      │     │   (Reasoning)    │     │  Handbook.md    │
-└─────────────────┘     └──────────────────┘     └─────────────────┘
-```
-
----
-
-## Folder Structure
-
-| Folder | Purpose |
-|--------|---------|
-| `/Inbox` | Drop zone for new files to process |
-| `/Needs_Action` | Items awaiting Claude's processing |
-| `/Done` | Completed & archived items |
-| `/Pending_Approval` | Awaiting your sign-off |
-| `/Briefings` | Auto-generated CEO briefings |
 
 ---
 
 ## Agent Skills
 
-Three custom skills are configured in `.claude/skills/`:
+Each skill has a `SKILL.md` (instructions for Claude) + `scripts/` (executable code):
 
-| Skill | Purpose |
-|-------|---------|
-| `process-inbox` | Scan `/Needs_Action`, take action, move to `/Done` |
-| `update-dashboard` | Refresh Dashboard.md with current counts |
-| `daily-briefing` | Generate CEO summary in `/Briefings` |
-
----
-
-## Testing the System
-
-1. **Drop a test file:**
-   ```bash
-   echo "Test invoice" > Inbox/test.txt
-   ```
-
-2. **Wait 5 seconds** — Watcher creates action file in `/Needs_Action`
-
-3. **Ask Claude to process:**
-   ```bash
-   claude -p "Process all files in Needs_Action using the process-inbox skill"
-   ```
-
-4. **Check Dashboard.md** — Activity log should show the processed item
+| Skill | Purpose | Script |
+|-------|---------|--------|
+| `gmail-send` | Send emails via Gmail SMTP | `scripts/send_email.py` |
+| `linkedin-post` | Post to LinkedIn via Playwright | `scripts/post_linkedin.py` |
+| `vault-file-manager` | Move files through workflow | `scripts/move_task.py` |
+| `human-approval` | Create & check approval files | `scripts/request_approval.py` |
+| `task-planner` | Generate Plan.md before acting | *(Claude-native)* |
+| `process-inbox` | Process all Needs_Action items | *(Claude-native)* |
+| `daily-briefing` | Generate CEO briefing | *(Claude-native)* |
+| `weekly-audit` | Full business weekly report | *(Claude-native)* |
 
 ---
 
-## Troubleshooting
+## Workflow
 
-| Issue | Solution |
-|-------|----------|
-| Watcher not creating files | Check `python watchers/filesystem_watcher.py` is running |
-| Claude not responding | Run `claude --login` first |
-| Gmail watcher fails | Verify IMAP enabled and App Password is correct |
-| Dashboard not updating | Ensure Claude has write permissions to vault |
-
----
-
-## Next Steps (Silver Tier)
-
-To upgrade to Silver Tier, add:
-
-- [ ] WhatsApp watcher integration
-- [ ] LinkedIn auto-posting
-- [ ] MCP server for sending emails
-- [ ] Human-in-the-loop approval workflow
-- [ ] Scheduled tasks (cron/Task Scheduler)
-
----
-
-## Security Notes
-
-- ⚠️ Never commit `.env` files with credentials
-- ⚠️ Use App Passwords, not main password for Gmail
-- ⚠️ All financial actions require human approval (see `Company_Handbook.md`)
+```
+External Input (email/file/CSV)
+        ↓
+   Watcher detects
+        ↓
+  Needs_Action/ created
+        ↓
+  Claude creates Plan.md
+        ↓
+  Pending_Approval/ (draft)
+        ↓
+  YOU review & approve
+        ↓
+  Approved/ → Skill executes
+        ↓
+       Done/
+```
 
 ---
 
-*Built with Claude Code + Obsidian · Bronze Tier Complete · 2026-03-09*
+## Gold Tier Features
+
+- **Weekly CEO Briefing** — Every Sunday, auto-generates business summary
+- **Audit Logger** — Thread-safe JSON logs, 30-day rotation
+- **Health Monitor** — Auto-restarts dead watchers using psutil
+- **Ralph Wiggum Hook** — Claude Code stop hook, enforces multi-step task completion
+
+## Platinum Tier Features
+
+- **Cloud VM Deploy** — Full Ubuntu 22.04 setup scripts (`deploy/`)
+- **13 Systemd Units** — All watchers as Linux services with timers
+- **Git Vault Sync** — Secure bidirectional sync (`.md`/`.json` only, never secrets)
+- **A2A Agent** — File-based Agent-to-Agent messaging via `/Updates/`
+- **Cloud Orchestrator** — Claim-by-move rule prevents double-processing
+
+---
+
+## Security
+
+- `.env` is in `.gitignore` — credentials never committed
+- `DRY_RUN=true` by default — nothing sent until you explicitly set `false`
+- All external actions require human approval via `/Pending_Approval/`
+- Vault sync whitelist: only `.md` and `.json` files sync to cloud
+
+---
+
+## Tech Stack
+
+- **Claude Code** — AI reasoning engine
+- **Python 3.11** — Watchers & scripts
+- **Node.js** — MCP servers
+- **Obsidian** — Markdown vault / knowledge base
+- **IMAP** — Gmail monitoring (no Google API needed)
+- **Twitter API v2** — OAuth 1.0a
+- **Playwright** — Browser automation (LinkedIn, WhatsApp)
+- **Systemd** — Linux service management (cloud)
+- **Git** — Vault sync between local & cloud
+
+---
+
+## License
+
+MIT — Free to use and modify.
+
+---
+
+*Personal AI Employee · All 4 Tiers Complete 🏆 · Built with Claude Code · 2026-03-09*
