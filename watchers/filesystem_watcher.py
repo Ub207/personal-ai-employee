@@ -17,6 +17,7 @@ import time
 import shutil
 import logging
 import argparse
+import subprocess
 from pathlib import Path
 from datetime import datetime
 
@@ -60,7 +61,7 @@ class InboxHandler(FileSystemEventHandler):
         if event.is_directory:
             return
         source = Path(event.src_path)
-        if source.suffix.lower() in {".md", ".tmp", ".part"}:
+        if source.suffix.lower() in {".tmp", ".part"}:
             return  # skip system / partial files
         if str(source) in self.processed:
             return
@@ -130,6 +131,24 @@ status: pending
         action_path.write_text(content, encoding="utf-8")
         log.info(f"Action file created: {action_path.name}")
         self._append_dashboard_log(source.name, action_filename)
+        self._auto_process(action_path.name)
+
+    def _auto_process(self, action_filename: str):
+        """Call Claude CLI to automatically process the new action file."""
+        prompt = (
+            f"New file detected in Needs_Action: {action_filename}\n"
+            f"Please process it according to Company_Handbook.md rules, "
+            f"move it to /Done, and update Dashboard.md."
+        )
+        log.info(f"Calling Claude to auto-process: {action_filename}")
+        try:
+            subprocess.Popen(
+                ["claude", "--print", prompt],
+                cwd=str(self.vault),
+                creationflags=subprocess.CREATE_NEW_CONSOLE if sys.platform == "win32" else 0,
+            )
+        except Exception as e:
+            log.warning(f"Claude auto-process failed: {e}")
 
     def _append_dashboard_log(self, source_name: str, action_file: str):
         """Append a line to the Recent Activity Log in Dashboard.md."""

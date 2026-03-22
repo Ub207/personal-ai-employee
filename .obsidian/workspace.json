@@ -4,21 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "b40fbc61b7a75ecf",
+        "id": "d8a2a5756b861782",
         "type": "tabs",
         "children": [
           {
-            "id": "d5c212421d4557aa",
+            "id": "ee341bea301442e0",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "vault/Company_Handbook.md",
-                "mode": "source",
-                "source": false
+                "file": "Untitled 1.canvas",
+                "viewState": {
+                  "x": 0,
+                  "y": 0,
+                  "zoom": 0
+                }
               },
-              "icon": "lucide-file",
-              "title": "Company_Handbook"
+              "icon": "lucide-layout-dashboard",
+              "title": "Untitled 1"
             }
           }
         ]
@@ -180,13 +183,23 @@
       "bases:Create new base": false
     }
   },
-  "active": "d5c212421d4557aa",
+  "active": "ee341bea301442e0",
   "lastOpenFiles": [
+    "2026-03-15.md",
+    "Untitled 1.canvas",
+    "Untitled 3.md",
+    "Untitled 4",
+    "Done/Approvals/APPROVED_TEST_APPROVAL_2026-03-09.md",
+    "Briefings/2026-03-09_Briefing.md",
+    "Briefings/2026-03-09_Audit_Report.md",
+    "Done/FILE_2026-03-04_064237_invoice_test.md",
+    "Done/platinum_demo/EMAIL_2026-03-09_041011_client_invoice_question.md",
+    "Done/platinum_demo/DONE_EMAIL_DRAFT_2026-03-09_041012_client@example.com.md",
+    "vault/Company_Handbook.md",
     "Done/20260307_075651_contnt.md",
     "Ai-employee-vault.md",
     "2026-02-28.md",
     "Done/FILE_2026-03-04_074526_context.md",
-    "Done/FILE_2026-03-04_064237_invoice_test.md",
     "Personal AI Employee Hackathon 0_ Building Autonomous FTEs in 2026.md",
     "Untitled 2.md",
     "Company_Handbook.md",
@@ -197,7 +210,6 @@
     "Untitled 1",
     "Untitled.md",
     "Untitled 4.md",
-    "Untitled 3.md",
     "Untitled"
   ]
 }
