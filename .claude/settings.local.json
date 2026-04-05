@@ -23,7 +23,9 @@
       "Bash(echo invoice_no,client,amount,date\nINV-001,ABC Corp,5000,2026-03-09\nINV-002,XYZ Ltd,2500,2026-03-09:*)",
       "Bash(gh auth:*)",
       "WebFetch(domain:developers.facebook.com)",
-      "Bash(claude --version)"
+      "Bash(claude --version)",
+      "Bash(cp \"D:/bronze_tier/Inbox/contxt.md\" \"D:/bronze_tier/Needs_Action/FILE_2026-04-05_000001_contxt.md\")",
+      "Bash(cp \"D:/bronze_tier/Inbox/TASK_20260403_091245_ai_eck.md\" \"D:/bronze_tier/Needs_Action/TASK_2026-04-05_000002_ai_eck.md\")"
     ]
   }
 }
